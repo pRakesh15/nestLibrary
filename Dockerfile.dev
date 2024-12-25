@@ -1,0 +1,17 @@
+FROM node:22-alpine as devlopment
+
+
+#set the working directory
+WORKDIR /app
+
+#copy packeg.json and packej-lock.json
+COPY packeg*.json ./
+
+#install all the deppendency
+RUN npm install
+
+#Copy the application code
+COPY . .
+
+#Start the application
+CMD [ "npm", "run", "start:dev" ]
